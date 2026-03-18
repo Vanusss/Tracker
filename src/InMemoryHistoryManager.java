@@ -27,48 +27,6 @@ public class InMemoryHistoryManager {
         this.last = last;
     }
 
-/*    void addFirst(Task task) {
-        Node newNode = new Node(task);
-        if(getFirst() != null){
-            newNode.setNext(getFirst());
-            getFirst().setPrev(newNode);
-            setFirst(newNode);
-        }
-        if (getFirst() == null) {
-            setFirst(newNode);
-        }
-        if((getLast() == null) && (getSize() > 1)){
-            Node check = getFirst();
-            while(check.getNext() != null){
-                check = check.getNext();
-            }
-            setLast(check);
-        }
-        size++;
-    }
-
- */
-
-    /*void remove(Node node) {
-        if(node == getFirst()) {
-            node.getNext().setPrev(null);
-            setFirst(node.getNext());
-            node.setNext(null);
-            return;
-        }
-        else if(node == getLast()) {
-            node.getPrev().setNext(null);
-            setLast(node.getPrev());
-            node.setPrev(null);
-            return;
-        }
-        else if(size >= 3) {
-            node.getPrev().setNext(node.getNext());
-            node.getNext().setPrev(node.getPrev());
-            node.setNext(null);
-            node.setPrev(null);
-        }
-    }*/
 
     void remove(Node node) {
         if (node == null) return;
