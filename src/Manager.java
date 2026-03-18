@@ -1,4 +1,6 @@
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Manager {
@@ -274,7 +276,7 @@ public class Manager {
         }
     }
 
-    void getById() {
+    Task getById() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите id задачи:");
         int id = scanner.nextInt();
@@ -284,22 +286,27 @@ public class Manager {
             System.out.println("описание:" + tasks.get(id).getDescription());
             System.out.println("идентификатор:" + tasks.get(id).getId());
             System.out.println("статус: " + tasks.get(id).getStatus());
+            return tasks.get(id);
         } else if (subTasks.containsKey(id)) {
             System.out.println("Подзадача:");
             System.out.println("имя: " + subTasks.get(id).getName());
             System.out.println("описание:" + subTasks.get(id).getDescription());
             System.out.println("идентификатор:" + subTasks.get(id).getId());
             System.out.println("статус: " + subTasks.get(id).getStatus());
+            return subTasks.get(id);
         } else if (epics.containsKey(id)) {
             System.out.println("Эпик:");
             System.out.println("имя: " + epics.get(id).getName());
             System.out.println("описание:" + epics.get(id).getDescription());
             System.out.println("идентификатор:" + epics.get(id).getId());
             System.out.println("статус: " + epics.get(id).getStatus());
+            return epics.get(id);
 
         } else if ((!subTasks.containsKey(id)) && (!epics.containsKey(id)) && (!tasks.containsKey(id))) {
             System.out.println("Неверный идентификатор");
+            return null;
         }
+        return null;
     }
 
     int chooseTaskType() {
@@ -316,5 +323,6 @@ public class Manager {
         }
         return choice;
     }
+
 
 }

@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Manager manager = new Manager();
+        InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
         while (true) {
             Scanner scanner = new Scanner(System.in);
             printMenu();
@@ -38,11 +39,14 @@ public class Main {
                     manager.deleteById();
                     break;
                 case 6:
-                    manager.getById();
+                    historyManager.linkLast(manager.getById());
                     break;
                 case 7:
                     manager.printAllEpicsSubTasks();
                     break;
+                    case 8:
+                        historyManager.printHistory();
+                        break;
                 default:
                     System.out.println("Ошибка меню");
             }
@@ -57,6 +61,7 @@ public class Main {
         System.out.println("5 - Удалить задачу по идентификатору");
         System.out.println("6 - Получить задачу по идентификатору");
         System.out.println("7 - Получить все подзадачи определенного эпика");
+        System.out.println("8 - Получить историю просмотра задач");
 
     }
 }
