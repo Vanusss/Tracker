@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Epic extends Task {
     private List<SubTask> subTasks = new ArrayList<>();
+    private Type type = Type.EPIC;
 
     public Epic(String name, String description) {
         super(name, description);

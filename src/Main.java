@@ -2,8 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Manager manager = new Manager();
-        InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
+        Manager manager = new FileBackedTasksManager();
         while (true) {
             Scanner scanner = new Scanner(System.in);
             printMenu();
@@ -39,13 +38,13 @@ public class Main {
                     manager.deleteById();
                     break;
                 case 6:
-                    historyManager.linkLast(manager.getById());
+                    manager.historyManager.linkLast(manager.getById());
                     break;
                 case 7:
                     manager.printAllEpicsSubTasks();
                     break;
                     case 8:
-                        historyManager.printHistory();
+                        manager.historyManager.printHistory();
                         break;
                 default:
                     System.out.println("Ошибка меню");

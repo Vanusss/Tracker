@@ -5,6 +5,7 @@ public class InMemoryHistoryManager {
     private int size;
     private Node first;
     private Node last;
+    ArrayList<Integer> history = new ArrayList<>();
     HashMap<Integer, Node> map = new HashMap<>();
 
     public int getSize() {
@@ -89,24 +90,25 @@ public class InMemoryHistoryManager {
 
         map.put(task.getId(), newNode);
         size++;
+        calculateHistory();
+
     }
 
 
-    ArrayList<Task> getTasks() {
-        ArrayList<Task> history = new ArrayList<>();
+    ArrayList<Integer> calculateHistory() {
+        ArrayList<Integer> result = new ArrayList<>();
         Node node = first;
         while (node != null) {
-            history.add(node.getItem());
+            result.add(node.getItem().getId());
             node = node.getNext();
         }
-        return history;
+        history = result;
+        return result;
     }
     void printHistory() {
-        int k = 1;
-        System.out.println("История просмотра: ");
-        for(Task task : getTasks()) {
-            System.out.println(k + ") " + task.getName());
-            k++;
+        System.out.println("История просмотра(ID): ");
+        for(Integer task : history) {
+            System.out.println(task);
         }
     }
 }

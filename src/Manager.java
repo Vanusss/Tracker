@@ -8,6 +8,7 @@ public class Manager {
     HashMap<Integer, Task> tasks = new HashMap<>();
     HashMap<Integer, SubTask> subTasks = new HashMap<>();
     HashMap<Integer, Epic> epics = new HashMap<>();
+    InMemoryHistoryManager historyManager = new InMemoryHistoryManager();
 
     Task prepareTask(Task task) {
         task.setId(idTracker);

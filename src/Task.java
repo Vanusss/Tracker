@@ -3,10 +3,24 @@ public class Task {
     private String description;
     private int id;
     private Status status;
+    private Type type = Type.TASK;
 
     public Task(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Task(String description, String name, int id, Status status) {
+        this.description = description;
+        this.name = name;
+        this.id = id;
+        this.status = status;
+        this.type = type;
+    }
+
+    @Override
+    public String toString(){
+        return getId() + "," + getType() + "," + getName() + "," + getStatus() + "," + getDescription() + ",";
     }
 
     public String getName() {
@@ -35,6 +49,10 @@ public class Task {
 
     public Status getStatus() {
         return status;
+    }
+
+    public Type getType() {
+        return type;
     }
 
     public void setStatus(Status status) {
