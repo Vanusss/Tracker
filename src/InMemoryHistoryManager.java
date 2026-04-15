@@ -105,10 +105,35 @@ public class InMemoryHistoryManager {
         history = result;
         return result;
     }
+
     void printHistory() {
+        calculateHistory();
         System.out.println("История просмотра(ID): ");
-        for(Integer task : history) {
+        for (Integer task : history) {
             System.out.println(task);
+        }
+    }
+
+    void clear() {
+        first = null;
+        last = null;
+        size = 0;
+        map.clear();
+        history.clear();
+    }
+
+    void recoverHistory(int[] ids, HashMap<Integer, Task> tasks, HashMap<Integer, SubTask> subTasks,
+                        HashMap<Integer, Epic> epics) {
+        for (int id : ids) {
+            if (tasks.containsKey(id)) {
+                linkLast(tasks.get(id));
+            }
+            else if (subTasks.containsKey(id)) {
+                linkLast(subTasks.get(id));
+            }
+            else if (epics.containsKey(id)) {
+                linkLast(epics.get(id));
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ public class Task {
         this.name = name;
         this.id = id;
         this.status = status;
-        this.type = type;
+        this.type = Type.TASK;
     }
 
     @Override
@@ -57,5 +57,8 @@ public class Task {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+    protected void setType(Type type) {
+        this.type = type;
     }
 }

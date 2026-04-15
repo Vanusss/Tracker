@@ -1,9 +1,11 @@
 public class SubTask extends Task {
     private int epicId;
-    private Type type = Type.SUBTASK;
+
 
     public SubTask(String name, String description) {
         super(name, description);
+        setType(Type.SUBTASK);
+
     }
     @Override
     public String toString(){
@@ -12,6 +14,12 @@ public class SubTask extends Task {
 
     public int getEpicId() {
         return epicId;
+    }
+
+    public SubTask(String description, String name, int id, Status status, int epicId) {
+        super(description, name, id, status);
+        setType(Type.SUBTASK);
+        this.epicId = epicId;
     }
 
     public void setEpicId(int epicId) {

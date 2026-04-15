@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Manager manager = new FileBackedTasksManager();
+        FileBackedTasksManager manager = new FileBackedTasksManager();
         while (true) {
             Scanner scanner = new Scanner(System.in);
             printMenu();
@@ -46,6 +46,12 @@ public class Main {
                     case 8:
                         manager.historyManager.printHistory();
                         break;
+                case 9:
+                    manager.save();
+                    break;
+                case 10:
+                    manager.loadFromFile();
+                    break;
                 default:
                     System.out.println("Ошибка меню");
             }
@@ -61,6 +67,8 @@ public class Main {
         System.out.println("6 - Получить задачу по идентификатору");
         System.out.println("7 - Получить все подзадачи определенного эпика");
         System.out.println("8 - Получить историю просмотра задач");
+        System.out.println("9 - Сохранить все в файл");
+        System.out.println("10 - Восстановить все из файла");
 
     }
 }
